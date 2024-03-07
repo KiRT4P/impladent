@@ -12,12 +12,20 @@ body {
     width: 100vw;
     background: url(../public/bg.png), lightgray 50% / cover repeat;
     background-blend-mode: SCREEN;
-    background-color: #49b9bf;
+    background-color: #45b4ba;
     backface-visibility: hidden;
     z-index: -1;
-    clip-path: polygon(0 6%, 100% 0, 100% 94%, 0% 100%);
+    
+}
+
+.mask-1{
+  clip-path: polygon(0 6%, 100% 0, 100% 94%, 0% 100%);
+}
+
+.mask-2{  
+  clip-path: polygon(0 6%, 100% 0, 100% 100%, 0% 100%);
 }
 
 main > div {
- @apply max-w-[1600px] px-28 mx-auto
+ @apply max-w-[1600px] px-28 mx-auto 
 }

@@ -9,10 +9,46 @@ import zub_4 from '../public/zub_4.png'
 import onas1 from '../public/top_left.png'
 import onas2 from '../public/right.png'
 import onas3 from '../public/bottom_left.png'
-import bg from '../public/bg.png'
+import vstup from "../public/dom-min 1.png"
+import navLogo from "../public/logo_nav.png"
+
+
+import g1 from "../public/galery/gal_1.png"
+import g2 from "../public/galery/gal_2.png"
+import g3 from "../public/galery/gal_3.png"
+import g4 from "../public/galery/gal_4.png"
+import g5 from "../public/galery/gal_5.png"
+
+import ig from "../public/ig_logo.png"
+import fb from "../public/fb_logo.png"
+
+import Reviews from "./components/Reviews";
+
+import { IconPhone, IconClock, IconMapPin } from '@tabler/icons-react'
+import ContactForm from "./components/ContactForm";
 
 
 export default function Home() {
+  const gal = [g1, g2, g3, g4, g5]
+  const qna = [
+    {
+      q: "Lorem ipsum dolor sit",
+      a: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio labore culpa dolore architecto repellendus quis cupiditate aperiam. Quia delectus porro labore quaerat deleniti deserunt hic, beatae rerum perferendis. Ut veniam inventore labore? Eveniet, quasi similique."
+    },
+    {
+      q: "Lorem ipsum dolor sit",
+      a: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio labore culpa dolore architecto repellendus quis cupiditate aperiam. Quia delectus porro labore quaerat deleniti deserunt hic, beatae rerum perferendis. Ut veniam inventore labore? Eveniet, quasi similique."
+    },
+    {
+      q: "Lorem ipsum dolor sit",
+      a: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio labore culpa dolore architecto repellendus quis cupiditate aperiam. Quia delectus porro labore quaerat deleniti deserunt hic, beatae rerum perferendis. Ut veniam inventore labore? Eveniet, quasi similique."
+    },
+    {
+      q: "Lorem ipsum dolor sit",
+      a: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio labore culpa dolore architecto repellendus quis cupiditate aperiam. Quia delectus porro labore quaerat deleniti deserunt hic, beatae rerum perferendis. Ut veniam inventore labore? Eveniet, quasi similique."
+    },
+  ]
+
   return (
     <main className="w-full  ">
       <div className="flex justify-between items-center">
@@ -50,9 +86,8 @@ export default function Home() {
         </div>
 
       </div>
-      <div className="mt-20 table custom-bg !max-w-[100vw]">
-
-        <div className="max-w-[1600px] mx-auto py-24">
+      <div className="mt-20  custom-bg mask-1 !max-w-[100vw]">
+        <div className="max-w-[1600px]  mx-auto py-24">
           <div className="flex">
             <div className=" flex w-[60%] items-center ">
               <div className="">
@@ -76,16 +111,134 @@ export default function Home() {
 
 
       </div>
-      <div className="pt-40 bg-[#F2F6FC] relative -top-20 -z-50">
+
+      <div className="pt-40 bg-[#F2F6FC] relative -top-20 -z-50   !max-w-[100vw]">
         <h1 className="text-primary text-5xl font-bold text-center">Čo o nás povedali pacienti</h1>
-        <h1 className="text-9xl font-bold text-customGray text-center py-40">NIČ</h1>
+        <div>
+          <Reviews />
+        </div>
+
       </div>
 
 
 
       <div>
         <h1 className="text-primary text-5xl font-bold text-center">Fotogaléria</h1>
-        <h1 className="text-9xl font-bold text-customGray text-center py-40">Nechce sa mi</h1>
+        <div className="flex justify-between my-20">
+          {gal.map((e, i) => (
+            <div key={i} className="w-1/6">
+              <Image src={e} alt="logo" className="aspect-square object-cover rounded-xl hover:scale-110 duration-300 cursor-pointer" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+      <div>
+        <h1 className="text-primary text-5xl font-bold text-center">Kontakt</h1>
+
+
+        <div className="bg-primary rounded-xl my-36">
+          <div className="flex justify-around mt-12 relative -top-24">
+            <div className="flex bg-white rounded-xl shadow-lg p-6  w-1/4 ">
+              <div className="pr-2">
+                <IconPhone fill="#46B8BD" color="#fff" size={"40px"} />
+
+              </div>
+              <div className="">
+                <p className="font-bold text-2xl text-customGray py-1">Telefón</p>
+                <div className="child:text-customGray child:py-1 pt-4">
+                  <p>+421 55 632 53 61 </p>
+                  <p>+421 918 973 835</p>
+                  <p>  +421 907 971 453</p>
+                </div>
+
+              </div>
+            </div>
+            <div className="flex bg-white rounded-xl shadow-lg p-6  w-1/3 ">
+              <div className="pr-2">
+                <IconClock fill="#46B8BD" color="#fff" size={"40px"} />
+
+              </div>
+              <div className="">
+                <p className="font-bold text-2xl text-customGray py-1">Ordinačné hodiny</p>
+                <div className="child:text-customGray child:py-1 pt-4">
+                  <p>8.00 - 15.00 </p>
+                  <p>Pondelok - Piatok</p>
+                  <p>a podľa dohody s pacientom</p>
+                </div>
+
+              </div>
+            </div>
+            <div className="flex bg-white rounded-xl shadow-lg p-6  w-1/4">
+              <div className="pr-2">
+                <IconPhone fill="#46B8BD" color="#fff" size={"40px"} />
+
+              </div>
+              <div className="">
+                <p className="font-bold text-2xl text-customGray py-1">Sídlo</p>
+                <div className="child:text-customGray child:py-1 pt-4">
+                  <p>Baštová 6 </p>
+                  <p>040 01 Košice</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-around relative -top-12">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2632.0261385117756!2d21.250575777483526!3d48.72409221014662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ee0669717b379%3A0xeacd045b5b03d122!2zQmHFoXRvdsOhIDUyMS82LCAwNDAgMDEgS2_FoWljZQ!5e0!3m2!1sen!2ssk!4v1688142599048!5m2!1sen!2ssk"
+              allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              className="w-2/5 rounded-2xl"
+            >
+            </iframe>
+            <Image src={vstup} alt="vstup do budovy" className="w-1/3" />
+          </div>
+          <ContactForm />
+        </div>
+
+      </div>
+
+      <div className="custom-bg mask-2 mt-96 !max-w-[100vw]">
+        <div className="max-w-[1600px]  mx-auto py-24 text-white">
+          <h1 className="text-center font-bold text-5xl">FAQ</h1>
+          <div className="w-2/3 mx-auto">
+            {qna.map((e, i) => (
+              <div key={i} className="my-10">
+                <h2 className="font-bold text-2xl mb-3">{i + 1}.{e.q}</h2>
+                <p className="font-light">{e.a}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
+      <div className=" bg-[#F2F6FC]  -z-50   !max-w-[100vw] flex justify-between py-16">
+        <div>
+          <Image src={navLogo} />
+          <p className="text-gray-400 text-sm py-12 w-2/3">
+            Neváhajte nás kontaktovať
+            cez naše sociálne siete
+          </p>
+          <div className="flex child:mr-8 ">
+            <a href="https://www.facebook.com/impladentkosice" target="_blank">
+              <Image src={fb} className="" />
+            </a>
+            <a href="https://www.instagram.com/impladent_kosice/" target="_blank">
+              <Image src={ig} className="" />
+            </a>
+          </div>
+        </div>
+        <div >
+          <h3 className="text-primary font-bold text-lg mb-3">Kontakt</h3>
+          <div className="text-gray-400 text-xs md:text-base whitespace-nowrap [&>*]:py-1">
+            <p>+421 55 632 53 61</p>
+            <p>+421 918 973 835</p>
+            <p>+421 907 971 453</p>
+            <p className="mt-3">Baštová 6</p>
+            <p>040 01 Košice</p>
+          </div>
+        </div>
+
       </div>
     </main>
   );
