@@ -91,11 +91,11 @@ export default function Home() {
           <div className="flex">
             <div className=" flex w-[60%] items-center ">
               <div className="">
-                <Image src={onas1} />
-                <Image src={onas3} className="mt-4 mr-4" />
+                <Image src={onas1} alt="fotka 1" />
+                <Image src={onas3} alt="fotka 2" className="mt-4 mr-4" />
               </div>
               <div>
-                <Image src={onas2} />
+                <Image src={onas2} alt="fotka 3" />
               </div>
 
             </div>
@@ -214,17 +214,17 @@ export default function Home() {
       </div>
       <div className=" bg-[#F2F6FC]  -z-50   !max-w-[100vw] flex justify-between py-16">
         <div>
-          <Image src={navLogo} />
+          <Image src={navLogo} alt="impladent logo" />
           <p className="text-gray-400 text-sm py-12 w-2/3">
             Neváhajte nás kontaktovať
             cez naše sociálne siete
           </p>
           <div className="flex child:mr-8 ">
             <a href="https://www.facebook.com/impladentkosice" target="_blank">
-              <Image src={fb} className="" />
+              <Image src={fb} className="" alt="fb logo" />
             </a>
             <a href="https://www.instagram.com/impladent_kosice/" target="_blank">
-              <Image src={ig} className="" />
+              <Image src={ig} className="" alt="ig logo" />
             </a>
           </div>
         </div>
