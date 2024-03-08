@@ -16,7 +16,7 @@ export default function Navbar() {
                         <Link href={"#foto"}>foto</Link>
                         <Link href={"#kontakt"}>kontakt</Link>
                         <div className="text-primary border-2 py-2 px-4 border-primary rounded-full hover:bg-primary  hover:text-white" data-open-modal>
-                            <p> objednať sa </p>
+                            <Link href={"?dialog=y"} scroll={false}> objednať sa </Link>
                         </div>
                     </div>
                 </div>

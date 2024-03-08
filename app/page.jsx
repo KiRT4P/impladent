@@ -27,8 +27,11 @@ import Reviews from "./components/Reviews";
 import { IconPhone, IconClock, IconMapPin } from '@tabler/icons-react'
 import ContactForm from "./components/ContactForm";
 
+import Link from "next/link";
+import Dialog from "./components/Dialog";
 
-export default function Home() {
+
+export default function Home({ searchParams }) {
   const gal = [g1, g2, g3, g4, g5]
   const qna = [
     {
@@ -51,6 +54,7 @@ export default function Home() {
 
   return (
     <main className="w-full  ">
+      {searchParams.dialog === "y" && <Dialog />}
       <div className="flex justify-between items-center">
         <div className="w-2/3 child:my-8">
           <h1 className="text-6xl text-primary font-extrabold w-2/3">Starostlivosť, akú si Vaše zuby zaslúžia.</h1>
@@ -62,9 +66,9 @@ export default function Home() {
               <h3 className="text-customGray">Dohodnite si konzultáciu alebo sa objednajte na vyšetrenie.</h3>
             </div>
             <div>
-              <button className="text-lg uppercase text-primary border-2 border-primary px-4 py-2 rounded-lg hover:text-white hover:bg-primary duration-300">
+              <Link href={"?dialog=y"} scroll={false} className="text-lg uppercase text-primary border-2 border-primary px-4 py-2 rounded-lg hover:text-white hover:bg-primary duration-300">
                 Rezervovať
-              </button>
+              </Link>
             </div>
           </div>
         </div>
