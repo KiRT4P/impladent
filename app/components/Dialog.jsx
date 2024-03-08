@@ -13,7 +13,7 @@ export default function Dialog() {
         let dest = pathname + "?" + params.toString();
         router.replace(
             dest,
-            undefined,
+            { scroll: false },
             { shallow: true }
         );
     };
