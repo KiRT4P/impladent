@@ -72,8 +72,8 @@ export default function Home() {
           <Image src={woman} alt="logo" className="  mx-auto" />
         </div>
       </div>
-      <div className="mt-20">
-        <h2 className="text-5xl text-primary font-bold text-center">Naše služby</h2>
+      <div id="sluzby" className="mt-20 scroll-mt-40">
+        <h2 className="text-5xl text-primary font-bold text-center ">Naše služby</h2>
         <div className="flex justify-between items-center mt-12">
           <Tooth src={zub_1} alt="logo" t1="Stomatológia" t2="Profesionálna starostlivosť o zuby" />
 
@@ -86,7 +86,7 @@ export default function Home() {
         </div>
 
       </div>
-      <div className="mt-20  custom-bg mask-1 !max-w-[100vw]">
+      <div id="onas" className="mt-20  custom-bg mask-1 !max-w-[100vw] scroll-mt-40">
         <div className="max-w-[1600px]  mx-auto py-24">
           <div className="flex">
             <div className=" flex w-[60%] items-center ">
@@ -122,7 +122,7 @@ export default function Home() {
 
 
 
-      <div>
+      <div id="foto" className="scroll-mt-40">
         <h1 className="text-primary text-5xl font-bold text-center">Fotogaléria</h1>
         <div className="flex justify-between my-20">
           {gal.map((e, i) => (
@@ -134,7 +134,7 @@ export default function Home() {
       </div>
 
 
-      <div>
+      <div id="kontakt" className="scroll-mt-40">
         <h1 className="text-primary text-5xl font-bold text-center">Kontakt</h1>
 
 
@@ -187,7 +187,7 @@ export default function Home() {
           <div className="flex justify-around relative -top-12">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2632.0261385117756!2d21.250575777483526!3d48.72409221014662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ee0669717b379%3A0xeacd045b5b03d122!2zQmHFoXRvdsOhIDUyMS82LCAwNDAgMDEgS2_FoWljZQ!5e0!3m2!1sen!2ssk!4v1688142599048!5m2!1sen!2ssk"
-              allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              loading="lazy"
               className="w-2/5 rounded-2xl"
             >
             </iframe>

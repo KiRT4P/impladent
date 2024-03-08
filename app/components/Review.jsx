@@ -4,7 +4,7 @@ export default function Review({ data }) {
     return (
         <div className="bg-white p-8 flex rounded-lg w-[45%] py-12">
             <div className="pr-8">
-                <Image src={data.photo} className="rounded-full w-60" />
+                <Image src={data.photo} className="rounded-full w-60" alt="user image" />
             </div>
             <div className=" ">
                 <h3 className="text-2xl font-bold">{data.name}</h3>
