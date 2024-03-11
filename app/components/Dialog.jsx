@@ -21,7 +21,7 @@ export default function Dialog() {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center w-screen !max-w-[100vw]">
             <div onClick={removeQueryParam} className="absolute left-0 top-0 w-screen h-screen z-10" ></div>
-            <div className='  bg-white z-40 rounded-xl flex justify-between p-8 relative'>
+            <div className='  bg-white z-40 rounded-3xl flex justify-between p-8 relative'>
                 <div className='absolute right-7 top-7 cursor-pointer' onClick={removeQueryParam}><IconX size={"2rem"} color='#46B8Bd' /></div>
                 <div className='w-[45%] '>
                     <div className='flex items-center mb-4'>
