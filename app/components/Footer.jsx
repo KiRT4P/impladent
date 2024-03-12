@@ -5,7 +5,7 @@ import navLogo from '../../public/logo_nav.png'
 
 export default function Footer() {
     return (
-        <div className=" bg-[#F2F6FC]  -z-50   !max-w-[100vw] flex justify-between py-16 px-28 mx-auto ">
+        <div className=" bg-[#F2F6FC]  z-40  !max-w-[100vw] flex justify-between py-16 px-28 mx-auto ">
             <div>
                 <Image src={navLogo} alt="impladent logo" />
                 <p className="text-gray-400 text-sm py-12 w-2/3">

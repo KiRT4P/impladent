@@ -1,9 +1,9 @@
 import Image from "next/image"
-import Dialog from "../components/Dialog"
+import Dialog from "../../components/Dialog"
 
-import onas1 from '../../public/onas1.jpg'
-import onas2 from '../../public/onas2.jpg'
-import onas3 from '../../public/onas3.png'
+import onas1 from '@/public/onas1.jpg'
+import onas2 from '@/public/onas2.jpg'
+import onas3 from '@/public/onas3.png'
 
 export default function page({ searchParams }) {
     return (

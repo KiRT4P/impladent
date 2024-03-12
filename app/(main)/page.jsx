@@ -1,30 +1,30 @@
 import Image from "next/image";
-import Tooth from "./components/Tooth";
+import Tooth from "../components/Tooth";
 
-import woman from '../public/woman_doctor.png'
-import zub_1 from '../public/zub_1.png'
-import zub_2 from '../public/zub_2.png'
-import zub_3 from '../public/zub_3.png'
-import zub_4 from '../public/zub_4.png'
-import onas1 from '../public/top_left.png'
-import onas2 from '../public/right.png'
-import onas3 from '../public/bottom_left.png'
+import woman from '@/public/woman_doctor.png'
+import zub_1 from '@/public/zub_1.png'
+import zub_2 from '@/public/zub_2.png'
+import zub_3 from '@/public/zub_3.png'
+import zub_4 from '@/public/zub_4.png'
+import onas1 from '@/public/top_left.png'
+import onas2 from '@/public/right.png'
+import onas3 from '@/public/bottom_left.png'
 
 
-import g1 from "../public/galery/gal_1.png"
-import g2 from "../public/galery/gal_2.png"
-import g3 from "../public/galery/gal_3.png"
-import g4 from "../public/galery/gal_4.png"
-import g5 from "../public/galery/gal_5.png"
+import g1 from "@/public/galery/gal_1.png"
+import g2 from "@/public/galery/gal_2.png"
+import g3 from "@/public/galery/gal_3.png"
+import g4 from "@/public/galery/gal_4.png"
+import g5 from "@/public/galery/gal_5.png"
 
-import Reviews from "./components/Reviews";
+import Reviews from "../components/Reviews";
 
 
 import Link from "next/link";
-import Dialog from "./components/Dialog";
-import Detail from "./components/Detail";
-import Gallery from "./components/Gallery";
-import Contact from "./components/Contact";
+import Dialog from "../components/Dialog";
+import Detail from "../components/Detail";
+import Gallery from "../components/Gallery";
+import Contact from "../components/Contact";
 
 
 export default function Home({ searchParams }) {
