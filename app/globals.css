@@ -34,3 +34,10 @@ main > div {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+.mobile-navbar > a {
+  @apply text-lg py-8 text-gray-400 border-b w-2/3 text-right uppercase;
+}
+
+
+
+
