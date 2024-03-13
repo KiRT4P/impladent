@@ -8,11 +8,11 @@ export default function Navbar() {
     return (
         <div className='flex justify-center h-24 w-full z-50'>
             <nav className=" w-full h-24 fixed bg-white z-40" >
-                <div className='max-w-[1600px] flex w-full  px-28 justify-between items-center h-24 mx-auto'>
-                    <div className="">
+                <div className='max-w-[1600px] flex w-full px-4  md:px-28 justify-between items-center h-24 mx-auto'>
+                    <Link href={"/"} className="">
                         <Image src="/logo_nav.png" alt="logo" width={360} height={360} className=' w-20' />
-                    </div>
-                    {path === "/" && <div className=" uppercase text-lg flex justify-around  items-center text-gray-400 child:mx-4 child-hover:text-primary child:duration-300 child:cursor-pointer">
+                    </Link>
+                    {path === "/" && <div className="hidden md:flex uppercase text-lg justify-around  items-center text-gray-400 child:mx-4 child-hover:text-primary child:duration-300 child:cursor-pointer">
                         <Link href="#sluzby">služby</Link>
                         <Link href={"#onas"}>o nás</Link>
                         <Link href={"#foto"}>foto</Link>
@@ -21,7 +21,7 @@ export default function Navbar() {
                             <Link href={"?dialog=y"} scroll={false}> objednať sa </Link>
                         </div>
                     </div>}
-                    {path !== "/" && <div className=" uppercase text-lg flex justify-around  items-center text-gray-400 child:mx-4 child-hover:text-primary child:duration-300 child:cursor-pointer">
+                    {path !== "/" && <div className="hidden md:flex uppercase text-lg justify-around  items-center text-gray-400 child:mx-4 child-hover:text-primary child:duration-300 child:cursor-pointer">
                         <Link href="/#sluzby">služby</Link>
                         <Link href={"/#onas"}>o nás</Link>
                         <Link href={"/#foto"}>foto</Link>

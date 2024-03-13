@@ -30,7 +30,7 @@ export default function Reviews() {
     ]
 
     return (
-        <div className="flex justify-between py-12">
+        <div className="flex justify-between py-12 flex-wrap">
             {ratings.map((e, i) => (
                 <Review key={i} data={e} />
             ))}
