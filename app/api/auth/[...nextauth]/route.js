@@ -4,6 +4,7 @@ import bcrypt from "bcrypt"
 
 
 import connection from "@/app/api/DBconnection.js";
+
 const handler = NextAuth({
     providers: [
         Credentials({
@@ -20,6 +21,7 @@ const handler = NextAuth({
                     const [rows] = await connection.execute('SELECT * FROM user WHERE email = ?', [email]);
                     let user = rows[0];
                     // console.log(await bcrypt.compare('  ', user.password));
+                    console.log(user);
                     if (user && await bcrypt.compare(password, user.password)) {
                         return user;
                     } else {
@@ -49,5 +51,8 @@ const handler = NextAuth({
     }
 
 })
+
+
+
 
 export { handler as GET, handler as POST }

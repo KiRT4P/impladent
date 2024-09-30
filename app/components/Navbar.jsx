@@ -33,7 +33,7 @@ export default function Navbar() {
                             <Link href={"?dialog=y"} scroll={false}> objednať sa </Link>
                         </div>
                     </div>}
-                    <div onClick={e => setShowNavbar(!showNavbar)}>
+                    <div className='md:hidden' onClick={e => setShowNavbar(!showNavbar)}>
                         <IconMenu2 size={40} color='#46B8BD' />
                     </div>
                     {
