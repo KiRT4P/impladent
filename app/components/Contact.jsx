@@ -8,14 +8,14 @@ import ContactForm from './ContactForm'
 import { useEffect, useState } from 'react'
 
 export default function Contact() {
-    const [city, setCity] = useState(true)
+    const [city, setCity] = useState('ke')
 
     const [phone, setPhone] = useState(["+421 55 632 53 61", "+421 918 973 835", "+421 907 971 453"])
     const [address, setAddress] = useState(["Baštová 6", "040 01 Košice"])
     const [gmap, setGMap] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2632.0261385117756!2d21.250575777483526!3d48.72409221014662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ee0669717b379%3A0xeacd045b5b03d122!2zQmHFoXRvdsOhIDUyMS82LCAwNDAgMDEgS2_FoWljZQ!5e0!3m2!1sen!2ssk!4v1688142599048!5m2!1sen!2ssk")
 
     useEffect(() => {
-        if (city) {
+        if (city === 'ke') {
             setPhone(["+421 55 632 5361", "+421 918 973 835", "+421 907 971 453", "kosice@impladent.sk"])
             setAddress(["Baštová 6", "040 01 Košice"])
             setGMap("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2632.0261385117756!2d21.250575777483526!3d48.72409221014662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473ee0669717b379%3A0xeacd045b5b03d122!2zQmHFoXRvdsOhIDUyMS82LCAwNDAgMDEgS2_FoWljZQ!5e0!3m2!1sen!2ssk!4v1688142599048!5m2!1sen!2ssk")
@@ -30,9 +30,9 @@ export default function Contact() {
         <div>
             <h1 className="text-primary text-5xl font-bold text-center">Kontakt</h1>
             <div className='flex justify-center items-center my-8'>
-                <h1 onClick={e => setCity(true)} className={`w-[50%] text-right text-4xl md:text-5xl font-bold  cursor-pointer ${city ? "text-primary" : "text-gray-300"}`}>Košice</h1>
+                <h1 onClick={e => setCity('ke')} className={`w-[50%] text-right text-4xl md:text-5xl font-bold  cursor-pointer ${city === 'ke' ? "text-primary" : "text-gray-300"}`}>Košice</h1>
                 <div className='w-[2px] h-8 bg-gray-300 mx-4 md:mx-12'></div>
-                <h1 onClick={e => setCity(false)} className={`w-[50%] text-4xl md:text-5xl font-bold cursor-pointer ${city ? "text-gray-300 " : "text-primary"}`}>Michalovce</h1>
+                <h1 onClick={e => setCity('mi')} className={`w-[50%] text-4xl md:text-5xl font-bold cursor-pointer ${city === 'mi' ? " text-primary " : "text-gray-300"}`}>Michalovce</h1>
             </div>
 
             <div className="bg-primary rounded-xl my-36">
@@ -69,7 +69,7 @@ export default function Contact() {
                     </div>
                     <div className="flex bg-white rounded-xl shadow-lg p-6  md:w-1/4">
                         <div className="pr-2">
-                            <IconMapPin fill="#46B8BD" color="#fff" size={"40px"} />
+                            <IconMapPin fill='#46B8BD' color='#fff' stroke={2} size={"40px"} />
 
                         </div>
                         <div className="">
@@ -88,7 +88,7 @@ export default function Contact() {
                         className="md:w-2/5 rounded-2xl aspect-square w-full px-9 md:px-0 md:aspect-square "
                     >
                     </iframe>
-                    {city && <Image src={vstup} alt="vstup do budovy" className="md:w-1/3 w-full px-9 mt-8 md:p-0 md:m-0" />}
+                    {city === 'ke' && <Image src={vstup} alt="vstup do budovy" className="md:w-1/3 w-full px-9 mt-8 md:p-0 md:m-0" />}
                 </div>
                 <ContactForm city={city} />
             </div>
