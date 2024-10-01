@@ -6,9 +6,9 @@ import zub_1 from '@/public/zub_1.png'
 import zub_2 from '@/public/zub_2.png'
 import zub_3 from '@/public/zub_3.png'
 import zub_4 from '@/public/zub_4.png'
-import onas1 from '@/public/top_left.png'
-import onas2 from '@/public/right.png'
-import onas3 from '@/public/bottom_left.png'
+import onas1 from '@/public/IMG_4114.jpg'
+import onas2 from '@/public/team.jpg'
+import onas3 from '@/public/IMG_4227.jpg'
 
 
 import g1 from "@/public/galery/gal_1.png"
@@ -31,8 +31,8 @@ export default function Home({ searchParams }) {
   const gal = [g1, g2, g3, g4, g5]
   const qna = [
     {
-      q: "Lorem ipsum dolor sit",
-      a: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio labore culpa dolore architecto repellendus quis cupiditate aperiam. Quia delectus porro labore quaerat deleniti deserunt hic, beatae rerum perferendis. Ut veniam inventore labore? Eveniet, quasi similique."
+      q: "Ako sa môžem objednať na konzultáciu o implantátoch?",
+      a: "Objednať sa môžete jednoducho telefonicky alebo e-mailom priamo cez našu webovú stránku. Tešíme sa na vašu návštevu!"
     },
     {
       q: "Lorem ipsum dolor sit",
@@ -46,6 +46,9 @@ export default function Home({ searchParams }) {
       q: "Lorem ipsum dolor sit",
       a: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio labore culpa dolore architecto repellendus quis cupiditate aperiam. Quia delectus porro labore quaerat deleniti deserunt hic, beatae rerum perferendis. Ut veniam inventore labore? Eveniet, quasi similique."
     },
+
+
+
   ]
 
   return (
@@ -104,20 +107,20 @@ export default function Home({ searchParams }) {
       <div id="onas" className="mt-20  custom-bg mask-1 !max-w-[100vw] scroll-mt-40">
         <div className="max-w-[1600px]  mx-auto py-24">
           <div className="flex flex-col md:flex-row justify-center items-center md:justify-normal md:items-stretch ">
-            <div className=" flex md:w-[60%] items-center ">
-              <div className="">
-                <Image src={onas1} alt="fotka 1" className="w-[92%] md:w-auto" />
-                <Image src={onas3} alt="fotka 2" className="w-[92%] md:w-auto mt-4 mr-4" />
-              </div>
-              <div>
-                <Image src={onas2} alt="fotka 3" />
-              </div>
+            <div className=" grid gap-4 grid-cols-2 grid-rows-2 md:w-1/2  md:mr-24 ">
 
+              <div className="w-full h-full relative">
+                <Image src={onas1} alt="fotka 1" className=" rounded-tl-3xl " fill />
+              </div>
+              <Image src={onas2} alt="fotka 3" className=" rounded-r-3xl row-span-2" />
+              <div className="w-full h-full relative">
+                <Image src={onas3} alt="fotka 2" className="rounded-bl-3xl" fill />
+              </div>
             </div>
             <div className="md:w-[40%] child:my-4 md:child:my-0 child:text-white flex flex-col justify-between py-12 ">
               <h2 className="uppercase text-xl">O nás</h2>
               <h1 className="font-bold text-4xl">15 rokov skúseností v poskytovaní dentálnej starostlivosti</h1>
-              <p className="font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p className="font-light">Sme tu pre vás, aby sme vám pomohli dosiahnuť zdravý a krásny úsmev.</p>
               <Link href={"/o-nas"} className="text-lg rounded-full border-2 border-white px-8 py-2 w-max uppercase font-light hover:bg-white hover:text-primary duration-300">Zisti viac!</Link>
             </div>
           </div>

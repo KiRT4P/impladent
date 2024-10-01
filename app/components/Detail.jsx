@@ -52,7 +52,7 @@ export default function Detail() {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center w-screen !max-w-[100vw]">
             <div onClick={removeQueryParam} className="absolute left-0 top-0 w-screen h-screen z-10" ></div>
-            <div className='  bg-white z-40 rounded-3xl  p-16 relative w-1/3'>
+            <div className='  bg-white z-40 rounded-3xl  p-16 relative w-1/2 md:min-w-[600px]'>
                 <div className='absolute right-7 top-7 cursor-pointer' onClick={removeQueryParam}><IconX size={"2rem"} color='#46B8Bd' /></div>
                 <h1 className='font-semibold text-4xl text-primary pb-8'>{query.get('detail')}</h1>
                 <div>

@@ -20,13 +20,7 @@ export default function Reviews() {
             rating: 5,
             text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Ullam rem nostrum aliquid molestiae quod alias natus explicabo repudiandae quaerat temporibus, qui sint at unde assumenda voluptas facere tenetur nam?",
             photo: dude2
-        },
-        // {
-        //     name: "Filip Bacskai",
-        //     rating: 5,
-        //     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.Ullam rem nostrum aliquid molestiae quod alias natus explicabo repudiandae quaerat temporibus, qui sint at unde assumenda voluptas facere tenetur nam?",
-        //     photo: dude3
-        // },
+        }
     ]
 
     return (
