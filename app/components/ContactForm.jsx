@@ -6,7 +6,6 @@ import { useRef, useEffect } from 'react'
 import { useFormState } from 'react-dom'
 
 export default function ContactForm({ city }) {
-    'use client'
     const [state, formAction] = useFormState(sendEmail.bind(null, city), {
         message: "",
         error: undefined,

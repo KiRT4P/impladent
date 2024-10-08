@@ -1,32 +1,36 @@
 
 import { IconInfoCircle } from '@tabler/icons-react';
+import connection from '@/app/api/DBconnection'
+import BannerForm from './BannerForm';
+import Show from './Show';
 
-export default function page() {
+const getValues = async () => {
+    let [data] = await connection.execute('SELECT * FROM banner')
+
+    return { value: data[0].content, display: data[0].display }
+}
+
+const handleDisplay = async () => {
+    'use server'
+    let { display } = await getValues()
+
+    let newDisplay = display ? 0 : 1
+    await connection.execute('UPDATE banner SET display = ?', [newDisplay])
+}
+
+
+export default async function page() {
+    const { value, display } = await getValues()
 
     return (
         <div className="p-16 px-24 w-full">
-            <div className="w-full  flex ">
-                <div className="bg-primary rounded-3xl py-2 px-4 flex text-white w-full">
-                    <h1 className="text-white font-bold">Aktuálny banner:</h1>
-                    <p className="pl-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, quia.</p>
-                </div>
-                <div className="border-primary border-2 rounded-full py-2 px-6 ml-8 flex text-primary w-max cursor-pointer">
-                    Vymazať
-                </div>
-            </div>
+            <Show display={display} value={value} handleDisplay={handleDisplay} />
             <div className="mt-20 shadow rounded-2xl p-16">
                 <div className='flex'>
                     <IconInfoCircle size={32} color="#46B8BD" />
                     <h1 className="font-semibold text-3xl text-primary pl-4">Banner </h1>
                 </div>
-                <div className="mt-4">
-                    <input
-                        type="text"
-                        placeholder="Text oznamu"
-                        className="outline outline-1 outline-gray-300 rounded-lg text-base p-6 pl-4 w-full my-8 placeholder-gray-300"
-                    />
-                    <div className="border-2 border-primary text-primary py-3 px-10 rounded-full text-lg ml-auto w-max cursor-pointer">Pridať</div>
-                </div>
+                <BannerForm value={value} />
             </div>
             <div className='flex pt-8 pl-4'>
                 <IconInfoCircle size={24} color="#d1d5db" />

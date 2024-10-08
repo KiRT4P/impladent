@@ -1,65 +1,50 @@
-"use client"
+import NavLinks from "./NavLinks"
+import connection from "@/app/api/DBconnection.js";
+import { cookies } from "next/headers";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation';
-import { IconMenu2, IconX } from '@tabler/icons-react'
-import { useState } from 'react';
-export default function Navbar() {
-    const path = usePathname()
-    const [showNavbar, setShowNavbar] = useState(false)
+
+const getSettings = async () => {
+    let [data] = await connection.execute('SELECT * FROM banner')
+    let obj = {}
+
+    if (data[0].display === 1) {
+        obj.display = true
+    } else {
+        obj.display = false
+    }
+    obj.content = data[0].content
+    return obj
+}
+
+export async function closeOffer() {
+    'use server'
+    const cookieStore = cookies();
+    const currentDate = new Date();
+    const twoDays = currentDate.getTime() + 48 * 60 * 60 * 1000;
+    cookieStore.set('closedOffer', 1, { expires: twoDays });
+}
+
+
+export default async function Navbar() {
+    const cookieStore = cookies();
+    const exists = cookieStore.has('closedOffer')
+    const data = await getSettings()
+    console.log(data);
+
+
     return (
-        <div className='flex justify-center h-24 w-full z-50'>
-            <nav className=" w-full h-24 fixed bg-white z-40" >
-                <div className='max-w-[1600px] flex w-full px-4  md:px-28 justify-between items-center h-24 mx-auto'>
-                    <Link href={"/"} className="">
-                        <Image src="/logo_nav.png" alt="logo" width={360} height={360} className=' w-20' />
-                    </Link>
-                    {path === "/" && <div className="hidden md:flex uppercase text-lg justify-around  items-center text-gray-400 child:mx-4 child-hover:text-primary child:duration-300 child:cursor-pointer">
-                        <Link href="#sluzby">služby</Link>
-                        <Link href={"#onas"}>o nás</Link>
-                        <Link href={"#foto"}>foto</Link>
-                        <Link href={"#kontakt"}>kontakt</Link>
-                        <div className="text-primary border-2 py-2 px-4 border-primary rounded-full hover:bg-primary  hover:!text-white" data-open-modal>
-                            <Link href={"?dialog=y"} scroll={false}> objednať sa </Link>
-                        </div>
-                    </div>}
-                    {path !== "/" && <div className="hidden md:flex uppercase text-lg justify-around  items-center text-gray-400 child:mx-4 child-hover:text-primary child:duration-300 child:cursor-pointer">
-                        <Link href="/#sluzby">služby</Link>
-                        <Link href={"/#onas"}>o nás</Link>
-                        <Link href={"/#foto"}>foto</Link>
-                        <Link href={"/#kontakt"}>kontakt</Link>
-                        <div className="text-primary border-2 py-2 px-4 border-primary rounded-full hover:bg-primary  hover:!text-white" data-open-modal>
-                            <Link href={"?dialog=y"} scroll={false}> objednať sa </Link>
-                        </div>
-                    </div>}
-                    <div className='md:hidden' onClick={e => setShowNavbar(!showNavbar)}>
-                        <IconMenu2 size={40} color='#46B8BD' />
-                    </div>
-                    {
-                        <div className="fixed md:hidden top-0 left-0  w-screen h-screen z-50  pointer-events-none">
-                            <div className={`  w-screen h-[100lvh] z-40 duration-300 ${showNavbar ? "bg-black/50 pointer-events-auto" : ""}`}>
-                                <div className={`absolute  bg-white h-[100lvh] w-[75vw] min-w-max z-50 duration-300  ${showNavbar ? "right-0" : "-right-[100vw]"}`}>
-                                    <div className="flex flex-col  items-end child:p-8 h-full mobile-navbar" onClick={e => setShowNavbar(!showNavbar)}>
-                                        <div className='!pb-4 border-b  w-2/3 flex justify-end'>
-                                            <IconX size={48} color='#46B8BD' />
-                                        </div>
-                                        <Link href={"/"}>Domov</Link>
-                                        <Link href="#sluzby">Služby</Link>
-                                        <Link href={"#onas"} >O nás</Link>
-                                        <Link href={"#foto"}>Foto</Link>
-                                        <Link href={"#kontakt"} >Kontakt</Link>
-                                        <div className="text-primary border-2 m-4 uppercase !py-3 px-6 border-primary rounded-full hover:bg-primary  hover:!text-white" data-open-modal>
-                                            <Link href={"?dialog=y"} scroll={false}> objednať sa </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        <div className={`flex justify-center  w-full z-50 ${(!exists && data.display) ? "h-32" : "h-24 "}`}>
+            <nav className={`w-full fixed bg-white z-40 ${(!exists && data.display) ? " h-32" : "h-24 "}`} >
+                {(!exists && data.display) &&
+                    <form action={closeOffer} className='bg-primary py-2 text-white text-center flex justify-between px-4 md:px-16'>
+                        <div></div>
+                        <div className="text-white text-lg">{data.content} </div>
 
-                        </div>
-                    }
-                </div>
+                        <button className="font-bold text-xl">X</button>
+                    </form>
+                }
+                <NavLinks />
             </nav >
         </div >
     )
-}
+} 
