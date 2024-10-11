@@ -5,21 +5,27 @@ import connection from "@/app/api/DBconnection.js";
 
 const getCases = async () => {
 
-    const [data] = await connection.query("SELECT * FROM Monthly");
+    const [data] = await connection.query("SELECT * FROM Monthly ORDER BY sorting DESC");
     data.forEach(e => {
         e.images = JSON.parse(e.images);
     });
     return data;
 }
 
-export default async function Admin() {
+export default async function Admin({ searchParams }) {
 
     const cases = await getCases();
+    const querry = searchParams.edit
+    const [data] = cases.filter(c => {
+        return c.id == querry
+    })
+
+
 
     return (
-        <div className="py-10   w-full flex h-full  min-h-screen ">
-            <Monthly />
-            <CoM cases={cases} />
+        <div className="py-5 w-full flex h-full  min-h-screen ">
+            <Monthly startData={data} />
+            <CoM cases={cases} selected={data?.id} />
         </div>
     );
 }

@@ -7,7 +7,7 @@ import { addMonthly } from './actions';
 import { useRef, useEffect, useState } from 'react'
 import { useFormState } from 'react-dom'
 
-export default function Monthly() {
+export default function Monthly({ startData }) {
 
     const currentYear = new Date().getFullYear();
     const years = Array.from({ length: 6 }, (_, index) => currentYear - index);
@@ -65,7 +65,6 @@ export default function Monthly() {
     const formRef = useRef(null)
 
     useEffect(() => {
-        console.log(state);
         if (state?.message === 'success') {
             location.reload()
         } else if (state?.message === 'error') {
@@ -73,21 +72,33 @@ export default function Monthly() {
         }
 
 
+
+
+
     }, [state])
+
+    useEffect(() => {
+        formRef.current.elements.month.value = startData ? startData.month : ""
+        formRef.current.elements.year.value = startData ? startData.year : ""
+        formRef.current.elements.title.value = startData ? startData.title : ""
+        formRef.current.elements.text.value = startData ? startData.text : ""
+
+    }, [startData])
+
 
 
     return (
-        <div className="rounded-3xl shadow-2xl p-8 w-[45%] mx-8">
+        <div className="rounded-3xl shadow-2xl p-8 w-[45%] mx-4">
             <div className="flex items-center">
                 <IconCirclePlus size={32} color="#46B8BD" />
-                <h1 className="font-semibold text-2xl text-primary pl-4">
-                    Nový prípad mesiaca
+                <h1 onClick={e => console.log(startData)} className="font-semibold text-2xl text-primary pl-4">
+                    {startData ? "Upraviť prípad" : " Nový prípad mesiaca"}
                 </h1>
             </div>
-            <form ref={formRef} action={handleSubmit} className="pt-8 flex flex-col h-full">
-                <div className='mb-4 flex'>
-                    <select disabled={pending} name='month' required className={`outline outline-1 outline-gray-200 rounded-lg text-base p-3 pl-4 w-full mb-5 mr-4 child:text-gray-900  invalid:text-gray-300 `}>
-                        <option value="" disabled selected hidden className='text-white hover:text-red-500'>Mesiac</option>
+            <form ref={formRef} action={handleSubmit} className="pt-8 flex flex-col">
+                <div className='flex'>
+                    <select defaultValue={""} disabled={pending} name='month' required className={`outline outline-1 outline-gray-200 rounded-lg text-base p-3 pl-4 w-full mb-5 mr-4 child:text-gray-900  invalid:text-gray-300 `}>
+                        <option value="" disabled hidden className='text-white hover:text-red-500'>Mesiac</option>
                         <option value="jan">Január</option>
                         <option value="feb">Február</option>
                         <option value="mar">Marec</option>
@@ -101,17 +112,19 @@ export default function Monthly() {
                         <option value="nov">November</option>
                         <option value="dec">December</option>
                     </select>
-                    <select disabled={pending} name='year' required className={`outline outline-1 outline-gray-200 rounded-lg text-base p-3 pl-4 w-full mb-5 ml-4 child:text-gray-900 placeholder-gray-300 invalid:text-gray-300 `}>
-                        <option value="" disabled selected hidden >Rok</option>
-                        {years.map((year) => (
-                            <option key={year} value={year.toString()}>
+                    <select defaultValue={""} disabled={pending} name='year' required className={`outline outline-1 outline-gray-200 rounded-lg text-base p-3 pl-4 w-full mb-5 ml-4 child:text-gray-900 placeholder-gray-300 invalid:text-gray-300 `}>
+                        <option value="" disabled hidden >Rok</option>
+                        {years.map((year, i) => (
+                            <option key={i} value={year.toString()}>
                                 {year}
                             </option>
+
                         ))}
                     </select>
                 </div>
 
                 <input
+
                     disabled={pending}
                     name='title'
                     type="text"
@@ -120,6 +133,7 @@ export default function Monthly() {
                     required
                 />
                 <textarea
+
                     disabled={pending}
                     name='text'
                     type="text"
@@ -128,8 +142,8 @@ export default function Monthly() {
                     required
                 ></textarea>
                 <label className="text-gray-300">Fotografie</label>
-                <Photos images={images} setImages={setImages} pending={pending} message={state.message} />
-                <div className='w-full grow flex items-end justify-end pb-6'>
+                <Photos startData={startData} images={images} setImages={setImages} pending={pending} message={state.message} />
+                <div className='w-full flex items-end justify-end  grow pb-3 '>
                     <Submit backCall={setPending} message={state.message} />
                 </div>
 
@@ -148,7 +162,7 @@ export function Submit({ message, backCall }) {
 
     useEffect(() => {
         backCall(pending)
-        console.log(pending);
+        //eslint-disable-next-line
     }, [pending])
 
 

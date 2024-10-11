@@ -4,9 +4,12 @@ export default async function Layout({ children }) {
 
 
     return (
-        <div>
+        <div className="min-h-screen flex flex-col ">
             <Navbar />
-            {children}
+            <div className="grow">
+                {children}
+            </div>
+
             <Footer />
 
         </div>

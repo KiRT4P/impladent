@@ -4,11 +4,11 @@ import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { IconChevronRight, IconChevronLeft } from '@tabler/icons-react';
 
 
-import g1 from "@/public/galery/gal_1.png"
-import g2 from "@/public/galery/gal_2.png"
-import g3 from "@/public/galery/gal_3.png"
-import g4 from "@/public/galery/gal_4.png"
-import g5 from "@/public/galery/gal_5.png"
+import g1 from "@/public/galery/gal_1.jpg"
+import g2 from "@/public/galery/gal_5.jpg"
+import g3 from "@/public/galery/gal_3.jpg"
+import g4 from "@/public/galery/gal_4.jpg"
+import g5 from "@/public/galery/gal_2.jpg"
 import Image from 'next/image';
 
 
@@ -44,7 +44,7 @@ export default function Gallery() {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center w-screen !max-w-[100vw]">
             <div onClick={removeQueryParam} className="absolute left-0 top-0 w-screen h-screen z-10" ></div>
-            <div className='z-40 rounded-3xl flex items-center justify-around w-3/4 select-none pointer-events-none'>
+            <div className='z-40 rounded-3xl flex items-center justify-around w-3/4 select-none pointer-events-none max-h-[90vh] overflow-hidden'>
                 <div className='cursor-pointer p-16 !pointer-events-auto'>
                     <IconChevronLeft size={"4rem"} color='#fff' onClick={() => swapParam(parseInt(query.get('gallery')) - 1)} />
                 </div>

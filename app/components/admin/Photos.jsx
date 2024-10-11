@@ -81,12 +81,12 @@ export default function Photos({ images, setImages, pending, message }) {
     };
 
     return (
-        <div className={' flex-wrap pt-4' + ((pending || message === 'success') ? " hidden " : " flex ")}>
+        <div className={' flex-wrap pt-1  ' + ((pending || message === 'success') ? " hidden " : " flex ")}>
 
             {urlImages.map((image, index) => (
                 <div
                     key={index}
-                    className={`size-32 rounded-2xl relative z-50 group   mr-4 mb-4 ${index === 0 ? "border-4 border-dotted border-primary" : ""}`}
+                    className={` mb-4 size-32 rounded-2xl relative z-50 group   mr-4  ${index === 0 ? "border-4 border-dotted border-primary" : ""}`}
                     draggable
                     onDragStart={(e) => (setDragItem(index))}
                     onDragEnter={(e) => { setDragOverItem(index) }}
@@ -108,20 +108,18 @@ export default function Photos({ images, setImages, pending, message }) {
                 </div>
             )
             )}
-            <div>
-                <div className="font-bold  cursor-pointer size-32 border-2 border-gray-300 rounded-2xl flex justify-center items-center mr-4 mb-4" onClick={openFileExplorer}>
-                    <IconCirclePlus size={32} color='#46B8BD' />
-                    <input
-                        type="file"
-                        accept="image/*"
-                        ref={inputRef}
-                        multiple
-                        onChange={handleImageChange}
-                        className='hidden'
-                    />
-                </div>
-
+            <div className="font-bold  cursor-pointer size-32 border-2 border-gray-300 rounded-2xl flex justify-center items-center mr-4 " onClick={openFileExplorer}>
+                <IconCirclePlus size={32} color='#46B8BD' />
+                <input
+                    type="file"
+                    accept="image/*"
+                    ref={inputRef}
+                    multiple
+                    onChange={handleImageChange}
+                    className='hidden'
+                />
             </div>
+
         </div>
     )
 }

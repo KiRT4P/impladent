@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Tooth from "../components/Tooth";
 
-import woman from '@/public/woman_doctor.png'
+import doctor from '@/public/doctor.png'
 import zub_1 from '@/public/zub_1.png'
 import zub_2 from '@/public/zub_2.png'
 import zub_3 from '@/public/zub_3.png'
@@ -11,11 +11,11 @@ import onas2 from '@/public/team.jpg'
 import onas3 from '@/public/IMG_4227.jpg'
 
 
-import g1 from "@/public/galery/gal_1.png"
-import g2 from "@/public/galery/gal_2.png"
-import g3 from "@/public/galery/gal_3.png"
-import g4 from "@/public/galery/gal_4.png"
-import g5 from "@/public/galery/gal_5.png"
+import g1 from "@/public/galery/gal_1.jpg"
+import g2 from "@/public/galery/gal_5.jpg"
+import g3 from "@/public/galery/gal_3.jpg"
+import g4 from "@/public/galery/gal_4.jpg"
+import g5 from "@/public/galery/gal_2.jpg"
 
 import Reviews from "../components/Reviews";
 
@@ -25,9 +25,20 @@ import Dialog from "../components/Dialog";
 import Detail from "../components/Detail";
 import Gallery from "../components/Gallery";
 import Contact from "../components/Contact";
+import UserMonth from "../components/UserMonth";
+
+import connection from "@/app/api/DBconnection.js";
+
+const getData = async () => {
+  const [data] = await connection.query("SELECT * FROM Monthly ORDER BY sorting DESC LIMIT 4");
+  data.forEach(e => {
+    e.images = JSON.parse(e.images);
+  });
+  return data;
+}
 
 
-export default function Home({ searchParams }) {
+export default async function Home({ searchParams }) {
   const gal = [g1, g2, g3, g4, g5]
   const qna = [
     {
@@ -50,6 +61,8 @@ export default function Home({ searchParams }) {
 
 
   ]
+
+  const data = await getData();
 
   return (
     <main className="w-full  ">
@@ -76,7 +89,7 @@ export default function Home({ searchParams }) {
 
 
         <div className="md:w-1/3">
-          <Image src={woman} alt="logo" className="  mx-auto  px-8 md:px-4" />
+          <Image src={doctor} alt="logo" className="  mx-auto  px-8 md:px-4" />
           <div className="md:hidden flex shadow-lg  py-4 px-4 justify-between items-center rounded-xl relative -top-12 bg-white">
             <div className="">
               <h2 className="text-xl text-primary">Rezervujte si termín</h2>
@@ -150,6 +163,8 @@ export default function Home({ searchParams }) {
           ))}
         </div>
       </div>
+
+      {data.length > 0 && <UserMonth data={data} />}
 
 
       <div id="kontakt" className="scroll-mt-40">

@@ -52,15 +52,15 @@ export default function Detail() {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center w-screen !max-w-[100vw]">
             <div onClick={removeQueryParam} className="absolute left-0 top-0 w-screen h-screen z-10" ></div>
-            <div className='  bg-white z-40 rounded-3xl  p-16 relative w-1/2 md:min-w-[600px]'>
-                <div className='absolute right-7 top-7 cursor-pointer' onClick={removeQueryParam}><IconX size={"2rem"} color='#46B8Bd' /></div>
+            <div className='  bg-white z-40 rounded-3xl  p-8 relative w-1/2 md:min-w-[600px]'>
+                <div className='absolute right-4 top-4 cursor-pointer' onClick={removeQueryParam}><IconX size={"1.5rem"} color='#46B8Bd' /></div>
                 <h1 className='font-semibold text-4xl text-primary pb-8'>{query.get('detail')}</h1>
-                <div>
+                <div className='pl-2'>
                     {list.map((item, index) => (
-                        <li key={index} className="text-gray-300 list-disc py-2 text-xl">{item}</li>
+                        <li key={index} className="text-customGray list-disc py-2 text-xl">{item}</li>
                     ))}
                 </div>
-                <div onClick={swapParam} className="text-lg rounded-full border-2 border-primary cursor-pointer text-primary px-8 py-2 w-max uppercase ml-auto hover:bg-primary hover:text-white duration-300 ">Objednať sa</div>
+                <div onClick={swapParam} className="text-lg rounded-full border-2 border-primary cursor-pointer text-primary px-8 py-2 w-max uppercase ml-auto hover:bg-primary hover:text-white duration-300 mt-8 ">Objednať sa</div>
             </div>
         </div>
     )
