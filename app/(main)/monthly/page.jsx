@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import Dialog from "@/app/components/Dialog";
 
 const getData = async () => {
-    const [data] = await connection.query("SELECT * FROM Monthly ORDER BY sorting DESC");
+    const [data] = await connection.query("SELECT * FROM monthly ORDER BY sorting DESC");
     data.forEach(e => {
         e.images = JSON.parse(e.images);
     });

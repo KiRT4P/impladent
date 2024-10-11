@@ -5,7 +5,7 @@ import Gallery from "./Gallery";
 import Dialog from "@/app/components/Dialog";
 
 const getCase = async (id) => {
-    const [data] = await connection.query("SELECT * FROM Monthly WHERE id = ?", [id]);
+    const [data] = await connection.query("SELECT * FROM monthly WHERE id = ?", [id]);
     data.forEach(e => {
         e.images = JSON.parse(e.images);
     });

@@ -30,7 +30,7 @@ import UserMonth from "../components/UserMonth";
 import connection from "@/app/api/DBconnection.js";
 
 const getData = async () => {
-  const [data] = await connection.query("SELECT * FROM Monthly ORDER BY sorting DESC LIMIT 4");
+  const [data] = await connection.query("SELECT * FROM monthly ORDER BY sorting DESC LIMIT 4");
   data.forEach(e => {
     e.images = JSON.parse(e.images);
   });
