@@ -16,10 +16,6 @@ body {
 .custom-bg {
     width: 100vw;
     background: url(../public/bg.png), lightgray 50% / cover repeat;
-    background-blend-mode: SCREEN;
-    background-color: #45b4ba;
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
     z-index: -1;
     
 }
@@ -65,30 +61,3 @@ main > div {
   border-radius: 10px;
   border: 0px none #ffffff;
 }
-
-/* 
-.custom-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-}
-
-.custom-scroll::-webkit-scrollbar {
-  width: 1px;
-}
-
-.custom-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  border-radius: 1px;
-  border: 0px ;
-}
-
-.custom-scroll::-webkit-scrollbar-button{
-  display: none;
-  height: 0;
-   width: 0
-} */
-
