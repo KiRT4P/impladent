@@ -26,7 +26,7 @@ export default function Reviews() {
     ]
 
     return (
-        <div className="flex justify-center   md:justify-between py-12 flex-wrap">
+        <div className="flex justify-center   md:justify-between py-12 flex-wrap max-w-[1600px] px-4 md:px-28 mx-auto ">
             {ratings.map((e, i) => (
                 <div key={i} className="bg-white p-4 md:p-8 md:grid grid-rows-2 grid-cols-5 rounded-xl md:w-[45%] w-[90%] my-4 md:my-0  ">
                     <div className="  flex  items-center ">

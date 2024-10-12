@@ -118,7 +118,7 @@ export default async function Home({ searchParams }) {
 
       </div>
       <div id="onas" className="mt-20  custom-bg mask-1 !max-w-[100vw] scroll-mt-40">
-        <div className="max-w-[1600px]  mx-auto py-24">
+        <div className="max-w-[1600px] px-4 md:px-28 mx-auto py-24">
           <div className="flex flex-col md:flex-row justify-center items-center md:justify-normal md:items-stretch ">
             <div className=" grid gap-4 grid-cols-2 grid-rows-2 md:w-1/2  md:mr-24 ">
 
@@ -174,7 +174,7 @@ export default async function Home({ searchParams }) {
 
       <div className="custom-bg mask-2 mt-96 !max-w-[100vw]">
         <div className="max-w-[1600px]  mx-auto py-24 text-white">
-          <h1 className="text-center font-bold text-5xl">FAQ</h1>
+          <h1 className="text-center font-bold text-5xl">Často kladené otázky</h1>
           <div className="md:w-2/3 mx-auto">
             {qna.map((e, i) => (
               <div key={i} className="my-10">

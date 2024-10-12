@@ -34,7 +34,7 @@ export default function UserMonth({ data }) {
                 </Link>
             </div>
             <div className="md:flex justify-between mt-4">
-                <Link href={"/monthly/" + thisMonth.id} className="md:w-[49%] relative flex flex-col justify-end rounded-lg overflow-hidden h-72">
+                <Link href={"/monthly/" + thisMonth.id} className="md:w-[49%] relative flex flex-col justify-end rounded-lg overflow-hidden h-72 md:h-auto">
                     <div className="-z-50 rounded-lg absolute h-full w-full bg-black">
                         <Image src={'http://localhost:6969/' + thisMonth.images[0]} alt="Cover" sizes="50vw" fill className="object-cover opacity-70" />
                     </div>
@@ -45,7 +45,7 @@ export default function UserMonth({ data }) {
                 </Link>
                 <div className="md:w-[49%] mt-4 md:mt-0">
                     {data.filter((_, i) => i > 0).map((c) => (
-                        <Link key={c.id} href={"/monthly/" + c.id} className="flex mb-4 md:mb-2  w-full items-center" >
+                        <Link key={c.id} href={"/monthly/" + c.id} className="flex mb-4 md:mb-0  w-full items-center md:even:my-2" >
                             <div className='aspect-[3/4] w-1/3 md:w-[20%] overflow-hidden relative size-24 bg-slate-100 rounded-xl'>
                                 <Image src={'http://localhost:6969/' + c.images[0]} sizes='20vw' quality={100} alt={c.title} fill className='object-cover' />
                             </div>

@@ -34,6 +34,8 @@ export default async function MonthlyPage({ searchParams }) {
         dec: 'December'
     }
 
+
+
     const maxPages = Math.ceil(data.length / 8)
     let arr = []
     for (let i = 0; i < maxPages; i++) {
@@ -57,14 +59,14 @@ export default async function MonthlyPage({ searchParams }) {
             <div className=" mb-16 relative">
                 <h1 className="text-primary font-bold text-5xl mb-8">Archív prípadov mesiaca</h1>
 
-                <div className=" mt-4 columns-2">
-                    {data.map((c, i) => (
+                <div className=" mt-4 md:columns-2">
+                    {data.filter((e, i) => i >= (current - 1) * 8 && i < current * 8).map((c, i) => (
                         <Link key={c.id} href={"/monthly/" + c.id} className={`flex mb-4   items-center ${i === 4 ? " break-before-column " : ""}`} >
-                            <div className='aspect-[3/4] w-[20%] overflow-hidden relative size-24 bg-slate-100 rounded-xl'>
+                            <div className='aspect-[4/3] h-24 md:h-auto md:w-[20%] overflow-hidden relative size-24 bg-slate-100 rounded-xl'>
                                 <Image src={'http://localhost:6969/' + c.images[0]} sizes='20vw' quality={100} alt={c.title} fill className='object-cover' />
                             </div>
-                            <div className=' flex justify-between flex-col h-full pl-5 w-[80%]'>
-                                <h1 className='text-primary font-bold text-xl'>Prípad mesiaca {months[c.month]}</h1>
+                            <div className=' flex justify-between flex-col h-24 md:h-full pl-2 md:pl-5 w-[80%]'>
+                                <h1 className='text-primary font-bold text-lg md:text-xl'>Prípad mesiaca {months[c.month]} <span className="text-customGray text-sm font-semibold">{c.year}</span> </h1>
                                 <h2 className='text-customGray line-clamp-3 h-[72px] '>{c.text}</h2>
                             </div>
 
