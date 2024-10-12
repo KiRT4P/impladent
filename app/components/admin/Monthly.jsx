@@ -3,7 +3,7 @@
 import { IconCirclePlus } from '@tabler/icons-react';
 import Photos from './Photos';
 
-import { addMonthly } from './actions';
+import { addMonthly, editMonthly } from './actions';
 import { useRef, useEffect, useState } from 'react'
 import { useFormState } from 'react-dom'
 
@@ -14,7 +14,7 @@ export default function Monthly({ startData }) {
     const [images, setImages] = useState([]);
     const [pending, setPending] = useState(false);
 
-    const [state, formAction] = useFormState(addMonthly, {
+    const [state, formAction] = useFormState(!!startData ? editMonthly : addMonthly, {
         message: "",
         error: undefined,
         values: {
@@ -23,8 +23,36 @@ export default function Monthly({ startData }) {
         }
     })
 
+    useEffect(() => {
+        setImages([]);
+        if (startData) {
+            console.log("running now");
+
+            const images = startData.images;
+            images.forEach(image => {
+                fetch(process.env.NEXT_PUBLIC_IMAGE_DOMAIN + '/' + image)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        blob = new File([blob], image, { type: 'image/jpeg' });
+                        setImages(old => [...old, blob]);
+                    });
+            });
+        }
+        // eslint-disable-next-line
+    }, [startData]);
+
 
     const handleSubmit = async (e) => {
+        if (startData) {
+            fetch(process.env.NEXT_PUBLIC_IMAGE_DOMAIN, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ files: startData.images })
+            })
+        }
+
         const formData = new FormData();
         let names = [];
         Array.from(images).forEach((file) => {
@@ -48,6 +76,7 @@ export default function Monthly({ startData }) {
 
                 const newImages = [...names];
                 e.append('images', JSON.stringify(newImages));
+                e.append('id', startData?.id);
                 formAction(e);
             } else {
                 console.log("fail");
@@ -59,6 +88,8 @@ export default function Monthly({ startData }) {
         }
 
 
+
+
     }
 
 
@@ -66,7 +97,8 @@ export default function Monthly({ startData }) {
 
     useEffect(() => {
         if (state?.message === 'success') {
-            location.reload()
+            redirect('/admin')
+
         } else if (state?.message === 'error') {
             alert(state.error)
         }
@@ -142,9 +174,12 @@ export default function Monthly({ startData }) {
                     required
                 ></textarea>
                 <label className="text-gray-300">Fotografie</label>
-                <Photos startData={startData} images={images} setImages={setImages} pending={pending} message={state.message} />
-                <div className='w-full flex items-end justify-end  grow pb-3 '>
-                    <Submit backCall={setPending} message={state.message} />
+                <Photos startData={startData} images={images} setImages={setImages} pending={pending} message={state?.message} />
+                <div className='w-full flex flex-col items-end justify-end  grow pb-3 '>
+                    <Submit backCall={setPending} message={state?.message} type={!!startData ? "update" : "add"} />
+                    {startData && <button type="submit" className="mt-4 w-36 h-max border-2 border-customGray rounded-3xl float-right hover:bg-customGray hover:text-white duration-300 cursor-pointer px-8 py-2 text-customGray uppercase text-lg">
+                        Vymazať
+                    </button>}
                 </div>
 
 
@@ -156,8 +191,9 @@ export default function Monthly({ startData }) {
 
 
 import { useFormStatus } from "react-dom";
+import { redirect } from 'next/navigation';
 
-export function Submit({ message, backCall }) {
+export function Submit({ message, backCall, type }) {
     const { pending } = useFormStatus();
 
     useEffect(() => {
@@ -167,8 +203,23 @@ export function Submit({ message, backCall }) {
 
 
     return (
-        <button type="submit" disabled={pending || message === 'success'} className=" h-max border-2 border-primary rounded-3xl float-right hover:bg-primary hover:text-white duration-300 cursor-pointer px-8 py-2 text-primary w-min uppercase text-lg">
-            {pending ? "Pridávam..." : message === 'success' ? "Pridané!" : "Pridať"}
-        </button>
+        <div>
+            {type === 'add' && <button type="submit" disabled={pending || message === 'success'} className="w-36 h-max border-2 border-primary rounded-3xl float-right hover:bg-primary hover:text-white duration-300 cursor-pointer px-8 py-2 text-primary uppercase text-lg">
+                {pending ? "Pridávam..." : message === 'success' ? "Pridané!" : "Pridať"}
+            </button>}
+            {type === 'update' && <button type="submit" disabled={pending || message === 'success'} className="w-36 h-max border-2 border-primary rounded-3xl float-right hover:bg-primary hover:text-white duration-300 cursor-pointer px-8 py-2 text-primary uppercase text-lg">
+                {pending ? "Ukladám..." : message === 'success' ? "Uložené!" : "Uložiť"}
+            </button>}
+        </div>
+
+
     );
 }
+
+export function ConfirmModal() {
+    return (
+        <div>
+            <h1>Are you sure you want to delete this case?</h1>
+        </div>
+    )
+} 
