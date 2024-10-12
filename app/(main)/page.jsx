@@ -153,7 +153,7 @@ export default async function Home({ searchParams }) {
 
 
 
-      <div id="foto" className="scroll-mt-40">
+      <div id="foto" className="scroll-mt-40 hidden md:block">
         <h1 className="text-primary text-5xl font-bold text-center">Fotogaléria</h1>
         <div className="flex w-screen justify-between my-20 overflow-x-scroll overflow-y-hidden md:overflow-visible ">
           {gal.map((e, i) => (

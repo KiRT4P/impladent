@@ -33,7 +33,7 @@ export default async function Navbar() {
 
     return (
         <div className={`flex justify-center  w-full z-50 ${(!exists && data.display) ? "h-32" : "h-24 "}`}>
-            <nav className={`w-full fixed backdrop-blur-xl bg-white/85 z-40 ${(!exists && data.display) ? " h-32" : "h-24 "}`} >
+            <nav className={`w-full fixed top-0 left-0 backdrop-blur-xl z-[100] bg-white/85  ${(!exists && data.display) ? " h-32" : "h-24 "}`} >
                 {(!exists && data.display) &&
                     <form action={closeOffer} className='bg-primary py-2 text-white text-center flex justify-between px-4 md:px-16'>
                         <div></div>

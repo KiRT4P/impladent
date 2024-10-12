@@ -29,9 +29,10 @@ export default function Contact() {
     return (
         <div>
             <h1 className="text-primary text-5xl font-bold text-center">Kontakt</h1>
-            <div className='flex justify-center items-center my-8'>
-                <h1 onClick={e => setCity('ke')} className={`w-[50%] text-right text-4xl md:text-5xl font-bold  cursor-pointer ${city === 'ke' ? "text-primary" : "text-gray-300"}`}>Košice</h1>
-                <div className='w-[2px] h-8 bg-gray-300 mx-4 md:mx-12'></div>
+            <div className='flex flex-col md:flex-row justify-center items-center my-8'>
+                <h1 onClick={e => setCity('ke')} className={`w-[50%] text-center md:text-right text-4xl md:text-5xl font-bold  cursor-pointer ${city === 'ke' ? "text-primary" : "text-gray-300"}`}>Košice</h1>
+                <div className='hidden md:block w-[2px] h-8 bg-gray-300 mx-4 md:mx-12'></div>
+                <div className=' md:hidden h-[2px] w-8 my-3 bg-gray-300 mx-4 md:mx-12'></div>
                 <h1 onClick={e => setCity('mi')} className={`w-[50%] text-4xl md:text-5xl font-bold cursor-pointer ${city === 'mi' ? " text-primary " : "text-gray-300"}`}>Michalovce</h1>
             </div>
 

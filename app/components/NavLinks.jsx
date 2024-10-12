@@ -11,7 +11,7 @@ export default function NavLinks() {
     const path = usePathname()
     const [showNavbar, setShowNavbar] = useState(false)
     return (
-        <div className='max-w-[1600px] flex w-full px-4  md:px-28 justify-between items-center h-24 mx-auto'>
+        <div className='max-w-[1600px] flex w-full px-4  md:px-28 justify-between items-center h-24 mx-auto z-[100]'>
             <Link href={"/"} className="">
                 <Image src="/logo_nav.png" alt="logo" width={360} height={360} className=' w-20' />
             </Link>
