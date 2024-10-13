@@ -22,7 +22,7 @@ export default function Gallery({ images }) {
     }
 
     return (
-        <div className="md:w-[45%] w-[95vw]  md:ml-8 ">
+        <div className="md:w-[45%] w-full  md:ml-8 ">
             <div className=" relative w-full aspect-video  overflow-hidden rounded-xl ">
                 <Image src={process.env.NEXT_PUBLIC_IMAGE_DOMAIN + '/' + images[selected]} alt={"ERROR"} fill className="bg-slate-200 object-cover" />
             </div>
