@@ -39,9 +39,9 @@ export default async function page({ params, searchParams }) {
     return (
         <main className="pt-12">
             {searchParams.dialog && <Dialog />}
-            <div className="flex ">
-                <div className="w-[50%] mb-12">
-                    <h1 className="uppercase text-xl text-[#c4cadc]">Prípad mesiaca</h1>
+            <div className="flex  md:flex-row flex-col-reverse">
+                <div className="md:w-[50%] mb-12">
+                    <h1 className="uppercase text-xl text-[#c4cadc] hidden md:block">Prípad mesiaca</h1>
                     <h2 className="py-8 text-primary text-5xl font-extrabold">{c.title}</h2>
                     <h3 className="text-[#c4cadc]"> {months[c.month]} {c.year} </h3>
                     <p className="py-8">

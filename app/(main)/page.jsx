@@ -157,9 +157,9 @@ export default async function Home({ searchParams }) {
         <h1 className="text-primary text-5xl font-bold text-center">Fotogaléria</h1>
         <div className="flex justify-between my-20 overflow-x-scroll overflow-y-hidden md:overflow-visible  ">
           {gal.map((e, i) => (
-            <div href={"?gallery=" + (i + 1)} scroll={false} key={i} className="w-[80vw] min-w-[80vw] pr-8 md:pr-0 aspect-square h-[80vw] md:w-1/6 md:min-w-0 md:h-auto ">
+            <Link href={"?gallery=" + (i + 1)} scroll={false} key={i} className="w-[80vw] min-w-[80vw] pr-8 md:pr-0 aspect-square h-[80vw] md:w-1/6 md:min-w-0 md:h-auto ">
               <Image src={e} alt="logo" className="aspect-square object-cover rounded-xl w-[80vw] h-[80vw] md:h-auto md:hover:scale-110 duration-300 cursor-pointer" />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
