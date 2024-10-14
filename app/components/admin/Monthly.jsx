@@ -26,7 +26,6 @@ export default function Monthly({ startData }) {
     useEffect(() => {
         setImages([]);
         if (startData) {
-            console.log("running now");
 
             const images = startData.images;
             images.forEach(image => {

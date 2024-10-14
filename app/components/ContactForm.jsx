@@ -18,8 +18,6 @@ export default function ContactForm({ city }) {
     const formRef = useRef(null)
 
     useEffect(() => {
-        console.log(state);
-
         if (state?.message === 'success') {
             formRef.current?.reset()
         } else if (state?.message === 'error') {
